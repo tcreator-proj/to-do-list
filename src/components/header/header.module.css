@@ -1,4 +1,11 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+
 .head {
-  font-size: 2rem;
+  font-size: 4rem;
   text-transform: capitalize;
+  margin-top: 0;
+  margin-bottom: 0;
 }

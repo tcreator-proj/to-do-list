@@ -1,11 +1,13 @@
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import style from './app.module.css';
 import Header from './components/header/Header';
 
 function App() {
   return (
     <Container className={style.app}>
-      <Header /> 
+      <Row className={style['todo-container']}>
+        <Header/>
+      </Row>
     </Container>
   );
 }
