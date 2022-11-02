@@ -1,0 +1,46 @@
+.list {
+  position: relative;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.list:hover>div {
+  left: -30px;
+}
+
+.list-in-work {
+  composes: list;
+}
+
+.list-in-work div{
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 90;
+  top: 7px;
+  left: -40px;
+  transition: 1s;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 30px solid #D0D4DC;
+}
+
+.list-completed {
+  composes: list;
+  text-decoration: line-through;
+  color: #94E1B0;
+}
+
+.list-completed div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 7px;
+  z-index: 90;
+  left: -40px;
+  transition: 1s;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 30px solid #94E1B0;
+}
