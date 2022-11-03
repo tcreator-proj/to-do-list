@@ -28,6 +28,7 @@ interface RadioButtonType {
 
 interface FilterPanelType {
   count: number,
+  showPanel: boolean,
   onCheckedClear: MouseEventHandler,
   onRadioClick: FormEventHandler
 }

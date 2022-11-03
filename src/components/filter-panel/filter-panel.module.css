@@ -4,7 +4,6 @@
   margin-bottom: 20px;
   height: 25px;
   font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 .form {
@@ -12,14 +11,25 @@
   justify-content: center;
 }
 
+.clear {
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.clear:hover {
+  border-top: 1px;
+  border-top-color: var(--checked-color);
+  border-top-style: solid;
+
+}
+
 .radio {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  /* background-color: aquamarine; */
 }
 
 .radio:first-child {

@@ -6,8 +6,8 @@ function Header() {
   return (
     <Row className={style.header}>
       <h4 className={style.head}>
-          to-do list
-        </h4>
+        to-do list
+      </h4>
     </Row>
   )
 }

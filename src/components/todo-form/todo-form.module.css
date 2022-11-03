@@ -10,7 +10,7 @@
 .input:focus {
   outline: none;
   border: none;
-  border-bottom: 3px dotted rgb(226, 188, 49);  
+  border-bottom: 2px dotted rgb(226, 188, 49);  
 }
 
 .row {

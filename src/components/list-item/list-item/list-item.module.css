@@ -1,12 +1,13 @@
 .list {
   position: relative;
-  font-family: 'Courier New', Courier, monospace;
   font-size: 1.5rem;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .list:hover>div {
   left: -30px;
+
 }
 
 .list-in-work {
@@ -23,13 +24,13 @@
   transition: 1s;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 30px solid #D0D4DC;
+  border-left: 30px solid var(--unchecked-color);
 }
 
 .list-completed {
   composes: list;
   text-decoration: line-through;
-  color: #94E1B0;
+  color: var(--checked-color);
 }
 
 .list-completed div {
@@ -42,5 +43,13 @@
   transition: 1s;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 30px solid #94E1B0;
+  border-left: 30px solid var(--checked-color);
+}
+
+.list-completed:hover {
+  border-right: 1px solid var(--checked-color);
+}
+
+.list-in-work:hover {
+  border-right: 1px solid var(--unchecked-color);
 }

@@ -12,9 +12,11 @@ function ToDOWrapper() {
   const [state, setState] = useState<StateType>({
     list: []
   })
+
   const inputRef: RefObject<HTMLInputElement> = createRef();
 
   const onChangeFormHandler: FormEventHandler = createChangeFormHandler(setState);
+
   const onItemClickHandler: MouseEventHandler = createItemClickHandler(setState);
 
   const onCheckedClearingHandler: MouseEventHandler = createCheckedClearingHandler(setState);
@@ -27,10 +29,13 @@ function ToDOWrapper() {
     <>
       <Header />
       <ToDoForm inputRef={inputRef} onSubmitHandler={onChangeFormHandler} />
-      <FilterPanel count={filteredList.length} onCheckedClear={onCheckedClearingHandler} onRadioClick={onChangeFilterRadio} />
+      <FilterPanel
+        showPanel={!!state.list.length}
+        count={filteredList.length}
+        onCheckedClear={onCheckedClearingHandler}
+        onRadioClick={onChangeFilterRadio} />
       <ListItemBlock onClickHandler={onItemClickHandler} itemList={filteredList} />
     </>
-
   )
 }
 

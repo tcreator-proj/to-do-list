@@ -5,6 +5,12 @@ import { StateType } from "./types/propTypes";
 
 type StateDispatch = Dispatch<SetStateAction<StateType>>;
 
+/**
+ * Wrapper under form changes handler.
+ * Run when user tap enter after text input 
+ * @param setState 
+ * @returns 
+ */
 function createChangeFormHandler(setState: StateDispatch): FormEventHandler {
 
   return (evt: FormEvent) => {
@@ -24,6 +30,12 @@ function createChangeFormHandler(setState: StateDispatch): FormEventHandler {
   }
 }
 
+
+/**
+ * Wrapper under handler for marking item like completed.
+ * @param setState StateDispatch
+ * @returns MouseEventHandler
+ */
 function createItemClickHandler(setState: StateDispatch): MouseEventHandler {
   return (evt: MouseEvent<HTMLElement>) => {
     const target: HTMLElement = evt.target as HTMLElement;
@@ -44,6 +56,11 @@ function createItemClickHandler(setState: StateDispatch): MouseEventHandler {
   }
 }
 
+/**
+ * Wrapper under handler clearing completed item
+ * @param setState {@type StateDispatch}
+ * @returns MouseEventHandler
+ */
 function createCheckedClearingHandler(setState: StateDispatch): MouseEventHandler {
   return () => {
     setState((prevState: StateType) => ({
@@ -52,6 +69,12 @@ function createCheckedClearingHandler(setState: StateDispatch): MouseEventHandle
   }
 }
 
+/**
+ * Wrapper under Handler for filter panel radio.
+ * Iterate at list and mark it hide or show
+ * @param setState {@type StateDispatch}
+ * @returns FormEventHandler
+ */
 function createChangeFilterRadio(setState: StateDispatch): FormEventHandler {
   return (evt: FormEvent) => {
     const radio: HTMLInputElement = evt.target as HTMLInputElement;
