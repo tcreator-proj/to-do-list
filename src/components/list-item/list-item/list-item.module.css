@@ -23,13 +23,13 @@
   transition: 1s;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 30px solid #D0D4DC;
+  border-left: 30px solid var(--unchecked-color);
 }
 
 .list-completed {
   composes: list;
   text-decoration: line-through;
-  color: #94E1B0;
+  color: var(--checked-color);
 }
 
 .list-completed div {
@@ -42,5 +42,5 @@
   transition: 1s;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 30px solid #94E1B0;
+  border-left: 30px solid var(--checked-color);
 }

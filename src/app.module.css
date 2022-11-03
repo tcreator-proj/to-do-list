@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Shalimar&display=swap');
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+:root {
+  --checked-color: #94E1B0;
+  --unchecked-color: #D0D4DC;
+}
+
 html {
   font-size: 16px;
 }
@@ -13,5 +18,4 @@ html {
 
 .todo-container {
   width: 500px;
-  height: 700px;
 }

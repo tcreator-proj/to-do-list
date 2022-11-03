@@ -22,4 +22,8 @@ interface StateType {
   list: Item[]
 }
 
-export type {FormTypes, ItemTypes, StateType, ItemBlockType}
+interface RadioButtonType {
+  name: string
+}
+
+export type {FormTypes, ItemTypes, StateType, ItemBlockType, RadioButtonType}
