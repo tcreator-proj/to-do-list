@@ -26,4 +26,10 @@ interface RadioButtonType {
   name: string
 }
 
-export type {FormTypes, ItemTypes, StateType, ItemBlockType, RadioButtonType}
+interface FilterPanelType {
+  count: number,
+  onCheckedClear: MouseEventHandler,
+  onRadioClick: FormEventHandler
+}
+
+export type {FormTypes, ItemTypes, StateType, ItemBlockType, RadioButtonType, FilterPanelType}

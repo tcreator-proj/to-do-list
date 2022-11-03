@@ -1,20 +1,30 @@
 import React from 'react'
 import { Col, Form, Row } from 'react-bootstrap';
+import { RadioType } from '../types/constants';
+import { FilterPanelType } from '../types/propTypes';
 import style from './filter-panel.module.css';
 import RadioButton from './RadioButton';
 
-function FilterPanel() {
+function FilterPanel({ count, onCheckedClear, onRadioClick }: FilterPanelType) {
+  
   return (
     <Row className={style.panel}>
-      <Col>0</Col>
-      <Col className={style['panel-buttons']}>
-        <Form className={style.form}>
-          {["all", "checked", "unchecked"].map((el: string) => <RadioButton name={el} /> )}
-        </Form>
-      </Col>
-      <Col>R</Col>
+      {
+        count
+          ? <>
+            <Col>{count}</Col>
+            <Col className={style['panel-buttons']}>
+              <Form className={style.form} onChange={onRadioClick}>
+                {[RadioType.ALL, RadioType.COMPLETED, RadioType.UNCOMPLETED].map((el: string, i: number) => <RadioButton name={el} key={i}/>)}
+              </Form>
+            </Col>
+            <Col onClick={onCheckedClear}>R</Col>
+          </>
+          : <></>
+      }
+
     </Row>
   )
 }
 
-export default FilterPanel;
+export default React.memo(FilterPanel);

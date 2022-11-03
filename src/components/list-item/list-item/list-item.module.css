@@ -13,7 +13,7 @@
   composes: list;
 }
 
-.list-in-work div{
+.list-in-work div {
   position: absolute;
   width: 0;
   height: 0;
@@ -23,13 +23,13 @@
   transition: 1s;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 30px solid var(--unchecked-color);
+  border-left: 30px solid #D0D4DC;
 }
 
 .list-completed {
   composes: list;
   text-decoration: line-through;
-  color: var(--checked-color);
+  color: #94E1B0;
 }
 
 .list-completed div {
@@ -42,5 +42,5 @@
   transition: 1s;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 30px solid var(--checked-color);
+  border-left: 30px solid #94E1B0;
 }

@@ -1,6 +1,7 @@
-import React, { createRef, FormEvent, FormEventHandler, MouseEvent, MouseEventHandler, RefObject, SetStateAction, useState } from 'react'
+import React, { createRef, FormEventHandler, MouseEventHandler, RefObject, useState } from 'react'
 import { Item } from '../model/Item';
 import FilterPanel from './filter-panel/FilterPanel';
+import { createChangeFilterRadio, createChangeFormHandler, createCheckedClearingHandler, createItemClickHandler } from './handlers';
 import Header from './header/Header';
 import ListItemBlock from './list-item/ListItemBlock';
 import ToDoForm from './todo-form/ToDoForm';
@@ -13,44 +14,24 @@ function ToDOWrapper() {
   })
   const inputRef: RefObject<HTMLInputElement> = createRef();
 
-  const onChangeFormHandler: FormEventHandler = (evt: FormEvent) => {
-    evt.preventDefault();
-    const formData: FormData = new FormData(evt.target as HTMLFormElement)
-    const inputValue: string | undefined = formData.get("inputValue")?.toString();
+  const onChangeFormHandler: FormEventHandler = createChangeFormHandler(setState);
+  const onItemClickHandler: MouseEventHandler = createItemClickHandler(setState);
 
-    if (inputValue) {
-      const item: Item = new Item(inputValue);
-      setState((prevState: StateType) => ({ list: [...prevState.list, item] }))
-    }
-  }
+  const onCheckedClearingHandler: MouseEventHandler = createCheckedClearingHandler(setState);
 
-  const onItemClickHandler: MouseEventHandler = (evt: MouseEvent) => {
-    const target: HTMLElement = evt.target as HTMLElement;
-    const parent: HTMLElement | null = target.closest("div[data-id]");
+  const onChangeFilterRadio: FormEventHandler = createChangeFilterRadio(setState);
 
-    if (parent) {
-      setState((prevState: StateType) => {
-
-        for (let item of prevState.list) {
-          if (item.id === parent.dataset.id) {
-            item.mark()
-            return ({ list: [...prevState.list] })
-          }
-        }
-        return prevState;
-      })
-    }
-  }
+  const filteredList: Item[] = state.list.filter((item: Item) => item.show);
 
   return (
     <>
       <Header />
       <ToDoForm inputRef={inputRef} onSubmitHandler={onChangeFormHandler} />
-      <FilterPanel />
-      <ListItemBlock onClickHandler={onItemClickHandler} itemList={state.list} />
+      <FilterPanel count={filteredList.length} onCheckedClear={onCheckedClearingHandler} onRadioClick={onChangeFilterRadio} />
+      <ListItemBlock onClickHandler={onItemClickHandler} itemList={filteredList} />
     </>
 
   )
 }
 
-export default ToDOWrapper
+export default React.memo(ToDOWrapper);
