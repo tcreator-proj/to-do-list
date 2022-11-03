@@ -17,12 +17,12 @@ function createChangeFormHandler(setState: StateDispatch): FormEventHandler {
     evt.preventDefault();
 
     const target: HTMLFormElement = evt.target as HTMLFormElement;
-    const input: HTMLInputElement = target[0] as HTMLInputElement;
+    const input: HTMLInputElement = target.elements[0] as HTMLInputElement;
     const formData: FormData = new FormData(target);
     const inputValue: string | undefined = formData.get("inputValue")?.toString();
 
-    input.value = "";
-
+    if(input) input.value = "";
+    
     if (inputValue) {
       const item: Item = new Item(inputValue);
       setState((prevState: StateType) => ({ list: [...prevState.list, item] }))

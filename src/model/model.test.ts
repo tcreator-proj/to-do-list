@@ -1,7 +1,7 @@
 import { Item } from "./Item";
 
 export default describe("Model tests", () => {
-  test("Item correct mark", () => {
+  it("Item correct mark", () => {
     const item: Item = new Item('text');
     item.hide();
     item.mark();

@@ -12,7 +12,7 @@ function FilterPanel({ showPanel, count, onCheckedClear, onRadioClick }: FilterP
       {
         showPanel
           ? <>
-            <Col>{count}</Col>
+            <Col className="task-count">{count}</Col>
             <Col className={style['panel-buttons']}>
               <Form className={style.form} onChange={onRadioClick}>
                 {[RadioType.ALL, RadioType.COMPLETED, RadioType.UNCOMPLETED]

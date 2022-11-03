@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders learn react link 1`] = `
+<DocumentFragment>
+  <div
+    class="app container"
+  >
+    <div
+      class="todo-container row"
+    >
+      <div
+        class="header row"
+      >
+        <h4
+          class="head"
+        >
+          to-do list
+        </h4>
+      </div>
+      <div
+        class="row row"
+      >
+        <form
+          class=""
+        >
+          <div>
+            <input
+              class="input form-control"
+              id="task-input"
+              max="100"
+              min="1"
+              name="inputValue"
+              placeholder="What's need to be done?"
+              type="text"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class="panel row"
+      />
+      <div
+        class="row"
+      >
+        <div
+          class="list-is-empty"
+        >
+          ╮(￣_￣)╭
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
