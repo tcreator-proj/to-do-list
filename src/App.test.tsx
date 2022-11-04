@@ -31,9 +31,7 @@ describe("App / Append task", () => {
   it("Create some user task and filter by completed", () => {
     render(<App />);
 
-    userEvent.type(screen.getByRole('textbox'), "This is just task{enter}");
-    userEvent.type(screen.getByRole('textbox'), "This is just task{enter}");
-    userEvent.type(screen.getByRole('textbox'), "This is just task{enter}");
+    userEvent.type(screen.getByRole('textbox'), "This is just task{enter}This is just task{enter}This is just task{enter}");
 
     userEvent.click(screen.getAllByRole('radio')[1]);
 
@@ -44,7 +42,7 @@ describe("App / Append task", () => {
     render(<App />);
 
     userEvent.type(screen.getByRole('textbox'), "This is just task{enter}");
-    userEvent.click(screen.queryByText(/This is just task/i))
+    userEvent.click(screen.queryByText(/This is just task/i) as HTMLElement)
 
     userEvent.click(screen.getAllByRole('radio')[1]);
 
@@ -54,12 +52,10 @@ describe("App / Append task", () => {
   it("Create 3 user tasks, click one and clear by uncomplete", () => {
     const {container} = render(<App />);
 
-    userEvent.type(screen.getByRole('textbox'), "First{enter}");
-    userEvent.type(screen.getByRole('textbox'), "Second{enter}");
-    userEvent.type(screen.getByRole('textbox'), "Third{enter}");
-    userEvent.click(screen.queryByText(/First/i));
+    userEvent.type(screen.getByRole('textbox'), "First{enter}Second{enter}Third{enter}");
+    userEvent.click(screen.queryByText(/First/i) as HTMLElement);
 
-    userEvent.click(container.querySelector(".clear.col"));
+    userEvent.click(container.querySelector(".clear.col") as HTMLElement);
 
     expect(container.querySelectorAll('.list-in-work').length).toEqual(2);
   })
@@ -67,16 +63,12 @@ describe("App / Append task", () => {
   it("Create 3 user tasks, click some filters and check count on board", () => {
     const {container} = render(<App />);
 
-    userEvent.type(screen.getByRole('textbox'), "First{enter}");
-    userEvent.type(screen.getByRole('textbox'), "Second{enter}");
-    userEvent.type(screen.getByRole('textbox'), "Third{enter}");
-    userEvent.type(screen.getByRole('textbox'), "Fourth{enter}");
-    userEvent.type(screen.getByRole('textbox'), "Fifth{enter}");
-    userEvent.click(screen.queryByText(/First/i));
-    userEvent.click(screen.queryByText(/Fourth/i));
+    userEvent.type(screen.getByRole('textbox'), "First{enter}Second{enter}Third{enter}Fourth{enter}Fifth{enter}");
+
+    userEvent.click(screen.queryByText(/First/i) as HTMLElement);
+    userEvent.click(screen.queryByText(/Fourth/i) as HTMLElement);
 
     expect(container.querySelector(".task-count")?.textContent).toEqual('5')
-    // userEvent.click(screen.queryByText(/Fourth/i));
     userEvent.click(screen.getAllByRole('radio')[1]);
 
     expect(container.querySelector(".task-count")?.textContent).toEqual('2');
