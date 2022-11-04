@@ -10,8 +10,8 @@ function ToDoForm({onSubmitHandler, inputRef}: FormTypes) {
         <Form.Group controlId="task-input">
           <Form.Control 
             name='inputValue'
-            min={1}
-            max={100}
+            minLength={5}
+            maxLength={100}
             className={style.input} 
             ref={inputRef} type="text" 
             placeholder="What's need to be done?" />

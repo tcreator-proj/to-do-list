@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react"
-import { MouseEvent } from "react";
 import ListItem from "./ListItem"
 
 export default describe("ListItem render.", () => {
