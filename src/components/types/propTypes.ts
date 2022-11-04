@@ -33,4 +33,8 @@ interface FilterPanelType {
   onRadioClick: FormEventHandler
 }
 
-export type {FormTypes, ItemTypes, StateType, ItemBlockType, RadioButtonType, FilterPanelType}
+interface ProgressbarType {
+  count: number
+}
+
+export type {FormTypes, ItemTypes, StateType, ItemBlockType, RadioButtonType, FilterPanelType, ProgressbarType}

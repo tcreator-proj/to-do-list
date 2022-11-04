@@ -15,4 +15,10 @@
 
 .row {
   margin-bottom: 30px;
+  position: relative;
+}
+
+.progress {
+  width: 100%;
+  height: 7px;
 }
