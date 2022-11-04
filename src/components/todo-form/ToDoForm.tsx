@@ -14,7 +14,7 @@ function ToDoForm({onSubmitHandler, inputRef}: FormTypes) {
     if(inputString) {
       setProgress(() => inputString.length)
     }
-  }, []);
+  }, [inputRef.current?.value]);
 
   return (
     <Row className={style.row}>
