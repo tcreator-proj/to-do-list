@@ -4,8 +4,7 @@ import style from './progressbar.module.css';
 
 function Progressbar({ count }: ProgressbarType) {
   const arr: number[] = [];
-  console.log(count)
-  for (let i = 0; i < 100; i++) {
+  for (let i = 1; i <= 100; i++) {
     arr.push(0);
   }
 
@@ -15,7 +14,11 @@ function Progressbar({ count }: ProgressbarType) {
         let styles = style.empty;
 
         if(i < count) {
-          styles = style.full;
+          if(count < 5) {
+            styles = style.overload;
+          } else {
+            styles = style.full;
+          }
         }
 
         if(a.length <= count) {

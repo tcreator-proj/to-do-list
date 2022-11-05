@@ -8,12 +8,14 @@ import style from './todo-form.module.css';
 function ToDoForm({onSubmitHandler, inputRef}: FormTypes) {
 
   const [progress, setProgress] = useState(0);
+
   const onProgressHandler: FormEventHandler = useCallback(() => {
     const inputString: string | undefined = inputRef.current?.value;
     
     if(inputString) {
       setProgress(() => inputString.length)
     }
+
   }, [inputRef.current?.value]);
 
   return (

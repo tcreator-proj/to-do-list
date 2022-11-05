@@ -27,7 +27,6 @@ function ToDOWrapper() {
 
   return (
     <>
-      <Header />
       <ToDoForm inputRef={inputRef} onSubmitHandler={onChangeFormHandler} />
       <FilterPanel
         showPanel={!!state.list.length}
