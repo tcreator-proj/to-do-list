@@ -60,28 +60,28 @@ describe("App / Append task", () => {
 
     expect(container.querySelectorAll('.listInWork').length).toEqual(2);
   })
+})
 
-  test("Create 3 user tasks, click some filters and check count on board", () => {
-    const {container} = render(<App />);
+test("Create 3 user tasks, click some filters and check count on board", () => {
+  const {container} = render(<App />);
 
-    userEvent.type(screen.getByRole('textbox'), "First{enter}Second{enter}Third{enter}Fourth{enter}Fifth{enter}");
+  userEvent.type(screen.getByRole('textbox'), "First{enter}Second{enter}Third{enter}Fourth{enter}Fifth{enter}");
 
-    userEvent.click(screen.queryByText(/First/i) as HTMLElement);
-    userEvent.click(screen.queryByText(/Fourth/i) as HTMLElement);
+  userEvent.click(screen.queryByText(/First/i) as HTMLElement);
+  userEvent.click(screen.queryByText(/Fourth/i) as HTMLElement);
 
-    screen.debug()
+  screen.debug()
 
-    expect(container.querySelector(".task-count")?.textContent).toEqual('5')
-    userEvent.click(screen.getAllByRole('radio')[1]);
+  expect(container.querySelector(".task-count")?.textContent).toEqual('5')
+  userEvent.click(screen.getAllByRole('radio')[1]);
 
-    expect(container.querySelector(".task-count")?.textContent).toEqual('2');
+  expect(container.querySelector(".task-count")?.textContent).toEqual('2');
 
-    userEvent.click(screen.getAllByRole('radio')[2]);
+  userEvent.click(screen.getAllByRole('radio')[2]);
 
-    expect(container.querySelector(".task-count")?.textContent).toEqual('3');
+  expect(container.querySelector(".task-count")?.textContent).toEqual('3');
 
-    userEvent.click(screen.getAllByRole('radio')[0]);
+  userEvent.click(screen.getAllByRole('radio')[0]);
 
-    expect(container.querySelector(".task-count")?.textContent).toEqual('5');
-  })
+  expect(container.querySelector(".task-count")?.textContent).toEqual('5');
 })
