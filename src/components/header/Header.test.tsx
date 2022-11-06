@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import Header from "./Header"
 
-export default test("Header. Correct render", () => {
+test("Header. Correct render", () => {
   render(<Header />);
   expect(screen.getByText(/to-do list/i)).toBeInTheDocument();
 })

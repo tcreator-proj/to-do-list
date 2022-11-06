@@ -16,7 +16,7 @@ function FilterPanel() {
   return (
     <Row className={style.panel}>
       {
-        !!state.orderedItem?.length
+        !!state.orderedItem.length
           ? <>
             <Col className="task-count">{filteredCount()}</Col>
             <Col>
