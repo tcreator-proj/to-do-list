@@ -1,18 +1,25 @@
 import { Item } from '../../model/Item'
-import { ItemBlockType } from '../types/propTypes'
 import ListItem from './list-item/ListItem';
 import style from './list-block-item.module.css';
 import { Row } from 'react-bootstrap';
-import React from 'react';
+import React, { useContext } from 'react';
+import { ToDoContext } from '../../context/contexts';
 
-function ListItemBlock(props: ItemBlockType) {
+function ListItemBlock() {
+  const { state } = useContext(ToDoContext);
+
   return (
     <Row>
-      {!props.itemList.length
-        ? <div className={style['list-is-empty']}>╮(￣_￣)╭</div>
-        : props.itemList
-          .map((item: Item) => <ListItem id={item.id} completed={item.completed}
-            text={item.text} onClickHandler={props.onClickHandler} key={item.id} />)}
+      {!state.orderedItem.length
+        ? <div className={style.listIsEmpty}>╮(￣_￣)╭</div>
+        : state.orderedItem
+          .map((itemID: string) => {
+            const item: Item | undefined = state.items.get(itemID)
+            if (item && item.show) {
+              const { id, text, completed } = item;
+              return <ListItem id={id} completed={completed} text={text} key={id} />
+            }
+          })}
     </Row>
   )
 }

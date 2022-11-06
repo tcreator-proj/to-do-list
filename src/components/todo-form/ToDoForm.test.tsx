@@ -9,7 +9,7 @@ export default describe("ListItem render.", () => {
 
     const handler = jest.fn();
 
-    render(<ToDoForm inputRef={ref} onSubmitHandler={handler} />);
+    render(<ToDoForm />);
 
     userEvent.type(screen.getByRole('textbox'), "eeeeee{Enter}")
     expect(handler).toBeCalledTimes(1);
@@ -22,7 +22,7 @@ export default describe("ListItem render.", () => {
       expect(str).not.toEqual(ref.current?.value)
     });
 
-    render(<ToDoForm inputRef={ref} onSubmitHandler={handler} />);
+    render(<ToDoForm />);
 
     userEvent.type(screen.getByRole('textbox'), str + "{Enter}")
   })

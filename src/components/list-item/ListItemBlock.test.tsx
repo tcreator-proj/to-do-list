@@ -1,13 +1,12 @@
 import { render, screen } from "@testing-library/react"
 import { Item } from "../../model/Item";
-import userEvent from '@testing-library/user-event';
 
 import ListItemBlock from "./ListItemBlock"
 
 export default describe("ListItemBlock render.", () => {
   it("correct render", () => {
     const itemList: Item[] = [new Item('some text'), new Item('just string')]
-    render(<ListItemBlock onClickHandler={() => {}} itemList={itemList} />);
+    render(<ListItemBlock/>);
     expect(screen.getByText(/some text/i)).toBeInTheDocument();
     expect(screen.getByText(/just string/i)).toBeInTheDocument();
   })

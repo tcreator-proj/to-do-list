@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form } from 'react-bootstrap';
-import { RadioType } from '../types/constants';
-import { RadioButtonType } from '../types/propTypes';
+import { RadioType } from '../../constant';
+import { RadioButtonType } from '../../types';
 import style from './filter-panel.module.css';
 
 function RadioButton({name}: RadioButtonType) {
@@ -11,7 +11,7 @@ function RadioButton({name}: RadioButtonType) {
       defaultChecked={name === RadioType.ALL || false}
       name="filter"
       type="radio"
-      id={name}
+      data-id={name}
     />
   )
 }

@@ -1,31 +1,31 @@
-import React from 'react';
-import { ProgressbarType } from '../../types/propTypes'
+import React, { useContext } from 'react';
+import { ProgressbarContext } from '../../../context/contexts';
 import style from './progressbar.module.css';
 
-function Progressbar({ count }: ProgressbarType) {
-  const arr: number[] = [];
-  for (let i = 1; i <= 100; i++) {
-    arr.push(0);
-  }
+const barIndicatorList: number[] = Array.from({ length: 100 }).map((_, i) => i)
+
+function Progressbar() {
+  const { state } = useContext(ProgressbarContext);
 
   return (
     <div className={style.bar}>
-      {arr.map((el: unknown, i: number, a: number[]) => {
+      {barIndicatorList.map((_, index: number) => {
+        const count = state.inputCount;
         let styles = style.empty;
 
-        if(i < count) {
-          if(count < 5) {
+        if (index < count) {
+          if (count < 5) {
             styles = style.overload;
           } else {
             styles = style.full;
           }
         }
 
-        if(a.length <= count) {
+        if (barIndicatorList.length <= count) {
           styles = style.overload
         }
         return (
-          <div className={styles} key={i}></div>
+          <div className={styles} key={index}></div>
         )
       })
       }

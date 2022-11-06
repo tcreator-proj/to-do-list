@@ -1,15 +1,28 @@
-
-import React from 'react'
+import React, { MouseEventHandler, useContext } from 'react'
 import { Row } from 'react-bootstrap';
-import { ItemTypes } from '../../types/propTypes';
+import { ToDoContext } from '../../../context/contexts';
+import { markTaskItem } from '../../../context/actionCreators';
 import style from './list-item.module.css';
+import { ItemTypes } from '../../../types';
 
-function ListItem({ id, completed, text, onClickHandler }: ItemTypes) {
+function ListItem({ id, completed, text }: ItemTypes) {
+  const {dispatch} = useContext(ToDoContext);
+  
+  const onAppendNewItemTaskHandler: MouseEventHandler = (evt) => {
+    const target: HTMLElement = evt.target as HTMLElement;
+    const parent: HTMLElement | null = target.closest("div[data-id]");
+    if(parent) {
+      const id: string | undefined = parent.dataset.id; 
+      if(id) {
+        dispatch(markTaskItem(id))
+      }
+    }
+  } 
 
   return (
     <Row data-id={id}
-      className={completed ? style['list-completed'] : style['list-in-work']}
-      onClick={onClickHandler}>
+      className={completed ? style.listCompleted : style.listInWork}
+      onClick={onAppendNewItemTaskHandler}>
       <div></div>
       <p>{text}</p>
     </Row>

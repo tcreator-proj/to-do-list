@@ -4,31 +4,32 @@ import App from './App';
 import userEvent from '@testing-library/user-event';
 
 describe("App/ correct render", () => {
-  it("find header text", async () => {
+  test("finding header text", async () => {
     render(<App />);
     expect(await screen.findByText(/to-do list/i)).toBeInTheDocument();
   })
 
-  it("Find input field", async () => {
+  test("Finding input field", async () => {
     render(<App />);
     expect(await screen.findByPlaceholderText(/What's need to be done?/i)).toBeInTheDocument()
   })
 
-  it("Find mock block", () => {
+  test("Finding mock block", () => {
     const {container} = render(<App />);
-    expect(container.querySelector(".list-is-empty")).toBeInTheDocument()
+    screen.debug();
+    expect(container.querySelector(".listIsEmpty")).toBeInTheDocument()
   })
 })
 
 describe("App / Append task", () => {
-  it("Create user task", async () => {
+  test("appending user task", async () => {
     render(<App />);
 
     userEvent.type(screen.getByRole('textbox'), "This is just task{enter}");
     expect(await screen.findByText(/This is just task/i)).toBeInTheDocument();
   })
 
-  it("Create some user task and filter by completed", () => {
+  test("Create some user task and filter by completed", () => {
     render(<App />);
 
     userEvent.type(screen.getByRole('textbox'), "This is just task{enter}This is just task{enter}This is just task{enter}");
@@ -38,7 +39,7 @@ describe("App / Append task", () => {
     expect(screen.queryByText(/This is just task/i)).not.toBeInTheDocument();
   })
 
-  it("Create 1 user task, click it and filter by completed", () => {
+  test("Create 1 user task, click it and filter by completed", () => {
     render(<App />);
 
     userEvent.type(screen.getByRole('textbox'), "This is just task{enter}");
@@ -49,7 +50,7 @@ describe("App / Append task", () => {
     expect(screen.queryByText(/This is just task/i)).toBeInTheDocument();
   })
 
-  it("Create 3 user tasks, click one and clear by uncomplete", () => {
+  test("Create 3 user tasks, click one and clear by uncomplete", () => {
     const {container} = render(<App />);
 
     userEvent.type(screen.getByRole('textbox'), "First{enter}Second{enter}Third{enter}");
@@ -57,16 +58,18 @@ describe("App / Append task", () => {
 
     userEvent.click(container.querySelector(".clear.col") as HTMLElement);
 
-    expect(container.querySelectorAll('.list-in-work').length).toEqual(2);
+    expect(container.querySelectorAll('.listInWork').length).toEqual(2);
   })
 
-  it("Create 3 user tasks, click some filters and check count on board", () => {
+  test("Create 3 user tasks, click some filters and check count on board", () => {
     const {container} = render(<App />);
 
     userEvent.type(screen.getByRole('textbox'), "First{enter}Second{enter}Third{enter}Fourth{enter}Fifth{enter}");
 
     userEvent.click(screen.queryByText(/First/i) as HTMLElement);
     userEvent.click(screen.queryByText(/Fourth/i) as HTMLElement);
+
+    screen.debug()
 
     expect(container.querySelector(".task-count")?.textContent).toEqual('5')
     userEvent.click(screen.getAllByRole('radio')[1]);

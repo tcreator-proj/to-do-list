@@ -7,14 +7,13 @@
 
 .list:hover>div {
   left: -30px;
-
 }
 
-.list-in-work {
+.listInWork {
   composes: list;
 }
 
-.list-in-work div {
+.listInWork div {
   position: absolute;
   width: 0;
   height: 0;
@@ -27,13 +26,13 @@
   border-left: 30px solid var(--unchecked-color);
 }
 
-.list-completed {
+.listCompleted {
   composes: list;
   text-decoration: line-through;
   color: var(--checked-color);
 }
 
-.list-completed div {
+.listCompleted div {
   position: absolute;
   width: 0;
   height: 0;
@@ -46,10 +45,10 @@
   border-left: 30px solid var(--checked-color);
 }
 
-.list-completed:hover {
+.listCompleted:hover {
   border-right: 1px solid var(--checked-color);
 }
 
-.list-in-work:hover {
+.listInWork:hover {
   border-right: 1px solid var(--unchecked-color);
 }

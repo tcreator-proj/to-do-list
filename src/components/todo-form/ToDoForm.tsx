@@ -1,40 +1,30 @@
-import { FormEvent, FormEventHandler, useCallback, useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import { Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { FormTypes } from '../types/propTypes';
 import Progressbar from './progressbar/Progressbar';
 import style from './todo-form.module.css';
+import { useFormHandlers } from '../../userHooks';
 
-function ToDoForm({onSubmitHandler, inputRef}: FormTypes) {
-
-  const [progress, setProgress] = useState(0);
-
-  const onProgressHandler: FormEventHandler = useCallback(() => {
-    const inputString: string | undefined = inputRef.current?.value;
-    
-    if(inputString) {
-      setProgress(() => inputString.length)
-    }
-
-  }, [inputRef.current?.value]);
+function ToDoForm() {
+  const { onSubmitHandler, onChangeHandler } = useFormHandlers();
 
   return (
-    <Row className={style.row}>
-      <Form onSubmit={onSubmitHandler}>
+    <Row className={style.row} onSubmit={onSubmitHandler}>
+      <Form>
         <Form.Group controlId="task-input">
-          <Form.Control 
+          <Form.Control
             name='inputValue'
             minLength={5}
             maxLength={100}
             className={style.input}
-            onChange={onProgressHandler}
-            ref={inputRef} type="text" 
+            onChange={onChangeHandler}
+            type="text"
             placeholder="What's need to be done?" />
         </Form.Group>
       </Form>
-      <Progressbar count={progress} />
+      <Progressbar />
     </Row>
   );
 }
 
-export default ToDoForm;
+export default React.memo(ToDoForm);
