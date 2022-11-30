@@ -3,17 +3,11 @@
   font-size: 1.5rem;
   cursor: pointer;
   box-sizing: border-box;
+  list-style-type: none;
 }
 
-.list:hover>div {
-  left: -30px;
-}
-
-.listInWork {
-  composes: list;
-}
-
-.listInWork div {
+.list::before {
+  content: "";
   position: absolute;
   width: 0;
   height: 0;
@@ -23,6 +17,13 @@
   transition: 1s;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
+}
+
+.listInWork {
+  composes: list;
+}
+
+.listInWork:before {
   border-left: 30px solid var(--unchecked-color);
 }
 
@@ -32,16 +33,7 @@
   color: var(--checked-color);
 }
 
-.listCompleted div {
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 7px;
-  z-index: 90;
-  left: -40px;
-  transition: 1s;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
+.listCompleted:before {
   border-left: 30px solid var(--checked-color);
 }
 

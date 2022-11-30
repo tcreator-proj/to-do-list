@@ -1,17 +1,14 @@
-import React from 'react'
 import { Row } from 'react-bootstrap';
-import style from './header.module.css';
+import style from './Header.module.css';
 
 function Header() {
   return (
-    <Row className={style.header}>
-      <h4 className={style.head}>
+    <Row as={"header"} className={style.header}>
+      <h1 className={style.head}>
         to-do list
-      </h4>
+      </h1>
     </Row>
   )
 }
 
-
-
-export default Header
+export default Header;

@@ -15,7 +15,6 @@ export class Item {
 
   /**
    * Mark task item like complete ot not complete
-   * @return @type boolean
    */
   public mark(): boolean {
     return this._completed = !this.completed;

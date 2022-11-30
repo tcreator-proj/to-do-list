@@ -1,8 +1,19 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
-  --checked-color: #94E1B0;
-  --unchecked-color: #D0D4DC;
+  --checked-color: #94e1b0;
+  --unchecked-color: #d0d4dc;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 html {
@@ -10,7 +21,7 @@ html {
 }
 
 .app {
-  font-family:'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   display: flex;
   justify-content: center;
 }

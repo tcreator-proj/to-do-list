@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import Progressbar from './progressbar/Progressbar';
+import Progressbar from './Progressbar/Progressbar';
 import style from './todo-form.module.css';
-import { useFormHandlers } from '../../userHooks';
+import { useFormHandlers } from './ToDoForm.hooks';
 
 function ToDoForm() {
   const { onSubmitHandler, onChangeHandler } = useFormHandlers();

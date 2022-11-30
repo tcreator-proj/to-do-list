@@ -1,7 +1,6 @@
-import { FormEvent, FormEventHandler, useContext } from "react";
-import { RadioType } from "./constant";
-import { createFilterTag, createNewTaskItem, reactByClearClick, setInputTyping } from "./context/actionCreators";
-import { ProgressbarContext, ToDoContext } from "./context/contexts";
+import { useContext, FormEventHandler, FormEvent } from "react";
+import { setInputTyping, createNewTaskItem } from "../../context/actionCreators";
+import { ToDoContext, ProgressbarContext } from "../../context/contexts";
 
 function useFormHandlers() {
   const { dispatch } = useContext(ToDoContext);
@@ -30,25 +29,4 @@ function useFormHandlers() {
   return { onSubmitHandler, onChangeHandler };
 }
 
-function useFilterPanel() {
-  const { dispatch } = useContext(ToDoContext);
-
-  const onFilterRadioHandler = (evt: FormEvent) => {
-    const radio: HTMLInputElement = evt.target as HTMLInputElement;
-    if (radio) {
-      const id: RadioType | null = radio.dataset.id as RadioType;
-      if (id) {
-        dispatch(createFilterTag(id));
-      }
-    }
-  }
-
-  const onClickByClearButton = () => {
-    dispatch(reactByClearClick())
-  }
-
-  return { onFilterRadioHandler, onClickByClearButton };
-}
-
-
-export { useFormHandlers, useFilterPanel }
+export {useFormHandlers}

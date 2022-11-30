@@ -1,7 +1,9 @@
 import { useReducer } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import style from './app.module.css';
-import Header from './components/header/Header';
+import style from './App.module.css';
+import FilterPanel from './components/FilterPanel/FilterPanel';
+import Header from './components/Header/Header';
+import ListItemBlock from './components/ListItemBlock/ListItemBlock';
 import ToDOWrapper from './components/ToDoWrapper';
 import { ToDoContext } from './context/contexts';
 import { initialState, toDoListReducer } from './context/reducers/toDoListReducer';
@@ -9,14 +11,16 @@ import { initialState, toDoListReducer } from './context/reducers/toDoListReduce
 function App() {
   const [state, dispatch] = useReducer(toDoListReducer, initialState);
   return (
-    <ToDoContext.Provider value={{ state, dispatch }}>
-      <Container className={style.app}>
-        <Row className={style.todoContainer}>
-          <Header />
+    <Container className={style.app}>
+      <Row className={style.todoContainer}>
+        <Header />
+        <ToDoContext.Provider value={{ state, dispatch }}>
           <ToDOWrapper />
-        </Row>
-      </Container>
-    </ToDoContext.Provider >
+          <FilterPanel />
+          <ListItemBlock />
+        </ToDoContext.Provider >
+      </Row>
+    </Container >
   );
 }
 

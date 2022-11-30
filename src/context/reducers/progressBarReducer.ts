@@ -1,5 +1,5 @@
-import { ProgressbarState } from "../../types";
 import { ACTIONS } from "../actions/actions";
+import { ProgressbarState } from "../contexts.types";
 
 const progressbarInitialState: ProgressbarState = {
   inputCount: 0

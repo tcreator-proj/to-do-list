@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { ProgressbarState, ToDoState } from "../types";
+import { ProgressbarState, ToDoState } from "./contexts.types";
 
 type Context = {
   state: ToDoState,

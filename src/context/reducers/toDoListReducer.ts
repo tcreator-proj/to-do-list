@@ -1,8 +1,7 @@
-
 import { RadioType } from "../../constant";
 import { Item } from "../../model/Item";
-import { ToDoState } from "../../types";
 import { ACTIONS } from "../actions/actions";
+import { ToDoState } from "../contexts.types";
 
 type ItemType = Item | undefined | null;
 
@@ -19,7 +18,8 @@ function toDoListReducer(state: ToDoState, action: any) {
       state.orderedItem.push(newItem.id);
       state.items.set(newItem.id, newItem);
       return {
-        ...state
+        orderedItem: state.orderedItem,
+        items: state.items
       }
     }
     case ACTIONS.CLEAR_COMPLETED_ITEM: {
@@ -31,7 +31,10 @@ function toDoListReducer(state: ToDoState, action: any) {
         }
         return true;
       })
-      return {...state};
+      return {
+        orderedItem: state.orderedItem,
+        items: state.items
+      };
     }
 
     case ACTIONS.CLICK_TO_ITEM: {
@@ -40,7 +43,11 @@ function toDoListReducer(state: ToDoState, action: any) {
       if(item) {
         item.mark();
       }
-      return {...state};
+      console.log(itemID)
+      return {
+        orderedItem: state.orderedItem,
+        items: state.items
+      };
     }
     case ACTIONS.FILTERED_RADIO: {
       const { filterTag } = payload;
@@ -62,7 +69,10 @@ function toDoListReducer(state: ToDoState, action: any) {
           }
         }
       })
-      return {...state};
+      return {
+        orderedItem: state.orderedItem,
+        items: state.items
+      };
     }
     default: {
       return state;

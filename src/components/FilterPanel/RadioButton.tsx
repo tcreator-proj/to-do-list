@@ -1,8 +1,11 @@
 import React from 'react'
 import { Form } from 'react-bootstrap';
 import { RadioType } from '../../constant';
-import { RadioButtonType } from '../../types';
-import style from './filter-panel.module.css';
+import style from './FilterPanel.module.css';
+
+interface RadioButtonType {
+  name: string
+}
 
 function RadioButton({name}: RadioButtonType) {
 

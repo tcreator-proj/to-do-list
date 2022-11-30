@@ -1,6 +1,10 @@
 import { RadioType } from "../constant";
-import { AnyAction } from "../types";
 import { ACTIONS } from "./actions/actions";
+
+interface AnyAction {
+  type: string,
+  payload: any
+}
 
 const setInputTyping = (count: number): AnyAction => ({
   type: ACTIONS.TYPE_INPUT,

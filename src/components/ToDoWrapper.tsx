@@ -1,22 +1,16 @@
-import React, { useReducer } from 'react'
+import { useReducer } from 'react'
 import { ProgressbarContext } from '../context/contexts';
 import { progressbarInitialState, progressBarReducer } from '../context/reducers/progressBarReducer';
-import FilterPanel from './filter-panel/FilterPanel';
-import ListItemBlock from './list-item/ListItemBlock';
-import ToDoForm from './todo-form/ToDoForm';
+import ToDoForm from './ToDoForm/ToDoForm';
 
 function ToDOWrapper() {
   const [progressbarState, progressbarDispatcher] = useReducer(progressBarReducer, progressbarInitialState);
 
   return (
-    <>
-      <ProgressbarContext.Provider value={{ state: progressbarState, dispatch: progressbarDispatcher }} >
-        <ToDoForm />
-      </ProgressbarContext.Provider>
-      <FilterPanel />
-      <ListItemBlock />
-    </>
+    <ProgressbarContext.Provider value={{ state: progressbarState, dispatch: progressbarDispatcher }} >
+      <ToDoForm />
+    </ProgressbarContext.Provider>
   )
 }
 
-export default React.memo(ToDOWrapper);
+export default ToDOWrapper;
